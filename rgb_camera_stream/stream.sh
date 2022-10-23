@@ -1,12 +1,14 @@
 ffmpeg -f v4l2 \
        -input_format mjpeg \
+       -framerate 30 \
        -video_size 640x480 \
        -thread_queue_size 512 \
        -i /dev/video0 \
        -f v4l2 \
        -input_format mjpeg \
+       -framerate 30 \
        -video_size 640x480 \
        -thread_queue_size 512 \
        -i /dev/video2 \
-       -c:v copy -map 0 output_0.mkv \
-       -c:v copy -map 1 output_2.mkv
+       -c:v copy -map 0 output_cam0_$(date +"%Y-%m-%d_%H:%M:%S").mkv \
+       -c:v copy -map 1 output_cam2_$(date +"%Y-%m-%d_%H:%M:%S").mkv
